@@ -26,9 +26,9 @@ function App() {
       setSkillsID(1)
     }
 
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
   }
-  const [skillsID, setSkillsID] = useState(null)
+  const [skillsID, setSkillsID] = useState(0)
   window.addEventListener('scroll', scrollHandler)
   const menuarr = [
     { id: 1, title: 'Home', href: '#tab-1' },
@@ -36,11 +36,8 @@ function App() {
     { id: 3, title: 'Experience', href: '#tab-3' },
     { id: 4, title: 'Contact', href: '#tab-4' },
   ]
-  const skillsArr = [
-    { id: 1, title: 'Soft skills', },
-    { id: 2, title: 'Technology', },
-    { id: 3, title: 'Frameworks', },
-  ]
+  const [leftItemMenuSkills, setLeftItemMenuSkills] = useState(159)
+  const [widthItemMenuSkills, setWidthItemMenuSkills] = useState(195)
 
   return (
     <div className='font-roboto scroll-smooth'>
@@ -298,13 +295,27 @@ function App() {
           data-aos="fade-up"
           data-aos-offset="200"
           data-aos-duration="3000"
-          className='relative flex justify-evenly mt-20 py-3 overflow-x-hidden'>
-          {
-            skillsArr.map((item) => (
-              <h3 onClick={() => setSkillsID(item.id)} className={`text-xl px-14 py-2 cursor-pointer`}>{item.title}</h3>
-            ))
-          }
-          <span className={`absolute duration-1000 ease-in-out w-14 h-1 bg-mainblue bottom-0  rounded-md curs ${skillsID === 1 || skillsID === 0 ? 'lg:left-1/3 lg:-translate-x-44 md:left-36 sm:left-24 left-16' : skillsID === 2 ? 'lg:left-2/3 lg:-translate-x-60 md:left-2/4 md:-translate-x-10 sm:left-72 left-64' : skillsID === 3 ? 'lg:left-full lg:-translate-x-60 md:left-2/3 md:translate-x-20 sm:left-3/4 sm:translate-x-5 left-3/4 translate-x-5' : ''}`}></span>
+          className='relative flex justify-evenly mt-20 py-3 overflow-x-hidden sm:text-xs md:text-xl'>
+          <h3
+          onResize={(e)=>{
+            console.log('mohammad');
+          }}
+          onClick={(e) => {
+            setSkillsID(1)
+            setLeftItemMenuSkills(e.target.offsetLeft.toString())
+            setWidthItemMenuSkills(e.target.offsetWidth.toString())
+          }} className={` px-2 py-2 cursor-pointer`}>Soft skills</h3>
+          <h3 onClick={(e) => {
+            setSkillsID(2)
+            setLeftItemMenuSkills(e.target.offsetLeft.toString())
+            setWidthItemMenuSkills(e.target.offsetWidth.toString())
+          }} className={` px-2 py-2 cursor-pointer`}>Technology</h3>
+          <h3 onClick={(e) => {
+            setSkillsID(3)
+            setLeftItemMenuSkills(e.target.offsetLeft.toString())
+            setWidthItemMenuSkills(e.target.offsetWidth.toString())
+          }} className={` px-2 py-2 cursor-pointer`}>Frameworks</h3>
+          <span style={{width:`${widthItemMenuSkills}px`,left:`${leftItemMenuSkills}px`}} className={`absolute duration-1000 ease-in-out h-1 bg-mainblue bottom-0  rounded-md und`}></span>
         </div>
 
         {/* skills */}
