@@ -7,10 +7,23 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 function App() {
+  const [leftItemMenuSkills, setLeftItemMenuSkills] = useState(159)
+  const [widthItemMenuSkills, setWidthItemMenuSkills] = useState(195)
+
+
+  const [leftItemMenu, setLeftItemMenu] = useState(0)
+  const [WidthItemMenu, setWidthItemMenu] = useState(266)
+
+  
   const tab1 = useRef(null)
   const tab2 = useRef(null)
   const tab3 = useRef(null)
   const tab4 = useRef(null)
+
+
+  const skill1 = useRef(null)
+  const skill2 = useRef(null)
+  const skill3 = useRef(null)
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -27,13 +40,28 @@ function App() {
         setLeftItemMenu(tab4.current.offsetLeft)
         setWidthItemMenu(tab4.current.offsetWidth)
       }
+
+      if(skillsID === 1){
+        setLeftItemMenuSkills(skill1.current.offsetLeft)
+        setWidthItemMenuSkills(skill1.current.offsetWidth)
+      }else if(skillsID === 2){
+        setLeftItemMenuSkills(skill2.current.offsetLeft)
+        setWidthItemMenuSkills(skill2.current.offsetWidth)
+
+      }else if(skillsID === 3){
+        setLeftItemMenuSkills(skill3.current.offsetLeft)
+        setWidthItemMenuSkills(skill3.current.offsetWidth)
+
+      }
     })
-  }, [])
+  }, [WidthItemMenu])
   const [idMenu, setIdMenu] = useState(1)
   const [scrollY, setScrollY] = useState(0)
-  useEffect(()=>{
-    window.addEventListener('scroll', scrollHandler)
-  },[])
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      scrollHandler()
+    })
+  }, [])
   const scrollHandler = () => {
     // if (window.scrollY < 1000) {
     //   setScrollY(window.scrollY)
@@ -72,19 +100,14 @@ function App() {
 
   }
   const [skillsID, setSkillsID] = useState(1)
-  
+
   const menuarr = [
     { id: 1, title: 'Home', href: '#tab-1', ref: tab1 },
     { id: 2, title: 'About', href: '#tab-2', ref: tab2 },
     { id: 3, title: 'Experience', href: '#tab-3', ref: tab3 },
     { id: 4, title: 'Contact', href: '#tab-4', ref: tab4 },
   ]
-  const [leftItemMenuSkills, setLeftItemMenuSkills] = useState(159)
-  const [widthItemMenuSkills, setWidthItemMenuSkills] = useState(195)
-
-
-  const [leftItemMenu, setLeftItemMenu] = useState(0)
-  const [WidthItemMenu, setWidthItemMenu] = useState(315)
+  
 
   return (
     <div className='font-roboto scroll-smooth'>
@@ -350,24 +373,27 @@ function App() {
           data-aos-duration="3000"
           className='relative flex justify-evenly mt-20 py-3 overflow-x-hidden sm:text-xs md:text-xl'>
           <h3
-            onResize={(e) => {
-              console.log('mohammad');
-            }}
             onClick={(e) => {
               setSkillsID(1)
               setLeftItemMenuSkills(e.target.offsetLeft.toString())
               setWidthItemMenuSkills(e.target.offsetWidth.toString())
-            }} className={` px-2 py-2 cursor-pointer`}>Soft skills</h3>
+            }}
+            ref={skill1}
+            className={` px-2 py-2 cursor-pointer`}>Soft skills</h3>
           <h3 onClick={(e) => {
             setSkillsID(2)
             setLeftItemMenuSkills(e.target.offsetLeft.toString())
             setWidthItemMenuSkills(e.target.offsetWidth.toString())
-          }} className={` px-2 py-2 cursor-pointer`}>Technology</h3>
+          }}
+            ref={skill2}
+            className={` px-2 py-2 cursor-pointer`}>Technology</h3>
           <h3 onClick={(e) => {
             setSkillsID(3)
             setLeftItemMenuSkills(e.target.offsetLeft.toString())
             setWidthItemMenuSkills(e.target.offsetWidth.toString())
-          }} className={` px-2 py-2 cursor-pointer`}>Frameworks</h3>
+          }}
+            ref={skill3}
+            className={` px-2 py-2 cursor-pointer`}>Frameworks</h3>
           <span style={{ width: `${widthItemMenuSkills}px`, left: `${leftItemMenuSkills}px` }} className={`absolute duration-1000 ease-in-out h-1 bg-mainblue bottom-0  rounded-md und`}></span>
         </div>
 
