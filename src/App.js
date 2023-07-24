@@ -63,13 +63,13 @@ function App() {
     })
   }, [])
   const scrollHandler = () => {
-    // if (window.scrollY < 1000) {
-    //   setScrollY(window.scrollY)
+    if (window.scrollY < 1000) {
+      setScrollY(window.scrollY)
 
-    // } else {
+    } else {
 
-    //   setScrollY(0)
-    // }
+      setScrollY(0)
+    }
     // if (window.scrollY >= 550 && window.scrollY <= 1300) {
     //   setIdMenu(2)
     // } else if (window.scrollY <= 400 && window.scrollY >= 10) {
