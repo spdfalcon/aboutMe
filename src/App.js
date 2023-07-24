@@ -1,43 +1,91 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io'
 import { AiFillGithub } from 'react-icons/ai'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 function App() {
-  const [idMenu, setIdMenu] = useState(0)
+  const tab1 = useRef(null)
+  const tab2 = useRef(null)
+  const tab3 = useRef(null)
+  const tab4 = useRef(null)
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      console.log('mohammad');
+      console.log(tab1.current.offsetLeft);
+      console.log(tab2.current.offsetLeft);
+      if(idMenu === 1){
+        setLeftItemMenu(tab1.current.offsetLeft)
+        setWidthItemMenu(tab1.current.offsetWidth)
+      }else if(idMenu === 2){
+        setLeftItemMenu(tab2.current.offsetLeft)
+        setWidthItemMenu(tab2.current.offsetWidth)
+      }else if(idMenu === 3){
+        setLeftItemMenu(tab3.current.offsetLeft)
+        setWidthItemMenu(tab3.current.offsetWidth)
+      }else if(idMenu === 4){
+        setLeftItemMenu(tab4.current.offsetLeft)
+        setWidthItemMenu(tab4.current.offsetWidth)
+      }
+    })
+  }, [])
+  const [idMenu, setIdMenu] = useState(1)
   const [scrollY, setScrollY] = useState(0)
   const scrollHandler = () => {
-    if (window.scrollY < 1000) {
-      setScrollY(window.scrollY)
-    } else {
-      setScrollY(0)
-    }
-    if (window.scrollY >= 550 && window.scrollY <= 1300) {
-      setIdMenu(2)
-    } else if (window.scrollY <= 400 && window.scrollY >= 10) {
+    // if (window.scrollY < 1000) {
+    //   setScrollY(window.scrollY)
+
+    // } else {
+
+    //   setScrollY(0)
+    // }
+    // if (window.scrollY >= 550 && window.scrollY <= 1300) {
+    //   setIdMenu(2)
+    // } else if (window.scrollY <= 400 && window.scrollY >= 10) {
+    //   setIdMenu(1)
+    // } else if (window.scrollY >= 1100 && window.screenY <= 1500) {
+    //   setIdMenu(3)
+    // }
+    // if (window.scrollY >= 2100 && window.scrollY <= 2300) {
+    //   setSkillsID(1)
+    // }
+    if (window.scrollY < 300) {
       setIdMenu(1)
-    } else if (window.scrollY >= 1100 && window.screenY <= 1500) {
+      setLeftItemMenu(0)
+      setWidthItemMenu(315)
+    } else if (window.scrollY >= 300 && window.scrollY <= 1200) {
+      setLeftItemMenu(316)
+      setWidthItemMenu(315)
+      setIdMenu(2)
+    } else if (window.scrollY >= 1200 && window.scrollY <= 1500) {
+      setLeftItemMenu(632)
+      setWidthItemMenu(315)
       setIdMenu(3)
-    }
-    if (window.scrollY >= 2100 && window.scrollY <= 2300) {
-      setSkillsID(1)
+    } else if (window.scrollY >= 2000 && window.scrollY <= 2300) {
+      setLeftItemMenu(948)
+      setWidthItemMenu(315)
+      setIdMenu(4)
     }
 
-    // console.log(window.scrollY);
+    console.log(window.scrollY);
   }
-  const [skillsID, setSkillsID] = useState(0)
+  const [skillsID, setSkillsID] = useState(1)
   window.addEventListener('scroll', scrollHandler)
   const menuarr = [
-    { id: 1, title: 'Home', href: '#tab-1' },
-    { id: 2, title: 'About', href: '#tab-2' },
-    { id: 3, title: 'Experience', href: '#tab-3' },
-    { id: 4, title: 'Contact', href: '#tab-4' },
+    { id: 1, title: 'Home', href: '#tab-1', ref: tab1 },
+    { id: 2, title: 'About', href: '#tab-2', ref: tab2 },
+    { id: 3, title: 'Experience', href: '#tab-3', ref: tab3 },
+    { id: 4, title: 'Contact', href: '#tab-4', ref: tab4 },
   ]
   const [leftItemMenuSkills, setLeftItemMenuSkills] = useState(159)
   const [widthItemMenuSkills, setWidthItemMenuSkills] = useState(195)
+
+
+  const [leftItemMenu, setLeftItemMenu] = useState(0)
+  const [WidthItemMenu, setWidthItemMenu] = useState(315)
 
   return (
     <div className='font-roboto scroll-smooth'>
@@ -68,11 +116,17 @@ function App() {
       <div className=' sticky left-0 top-0 grid grid-cols-4 gap-px text-header1 md:text-2xl font-lato shadow-lg bg-white overflow-x-hidden z-50'>
         {
           menuarr.map((item) => (
-            <a onClick={() => setIdMenu(item.id)} className='py-4 flex justify-center items-center' href={item.href}>{item.title}</a>
+            <a
+              ref={item.ref}
+              onClick={(e) => {
+                setIdMenu(item.id)
+                setLeftItemMenu(e.target.offsetLeft)
+                setWidthItemMenu(e.target.offsetWidth)
+              }} className='py-4 flex justify-center items-center' href={item.href}>{item.title}</a>
           ))
         }
         <div className='absolute w-full h-2 bottom-0'>
-          <span className={`xl:w-80 lg:w-72 md:w-60 sm:w-44 w-32 h-full bg-mainblue inline-block absolute duration-1000 ease-in-out rounded-md ${idMenu === 1 ? `translate-x-[0%]` : idMenu === 2 ? 'translate-x-[100%]' : idMenu === 3 ? 'translate-x-[200%]' : idMenu === 4 ? 'translate-x-[300%]' : ''}`}></span>
+          <span style={{ width: `${WidthItemMenu}px`, left: `${leftItemMenu}px` }} className={`h-full bg-mainblue inline-block absolute duration-1000 ease-in-out rounded-md`}></span>
         </div>
       </div>
       {/* end menu */}
@@ -297,14 +351,14 @@ function App() {
           data-aos-duration="3000"
           className='relative flex justify-evenly mt-20 py-3 overflow-x-hidden sm:text-xs md:text-xl'>
           <h3
-          onResize={(e)=>{
-            console.log('mohammad');
-          }}
-          onClick={(e) => {
-            setSkillsID(1)
-            setLeftItemMenuSkills(e.target.offsetLeft.toString())
-            setWidthItemMenuSkills(e.target.offsetWidth.toString())
-          }} className={` px-2 py-2 cursor-pointer`}>Soft skills</h3>
+            onResize={(e) => {
+              console.log('mohammad');
+            }}
+            onClick={(e) => {
+              setSkillsID(1)
+              setLeftItemMenuSkills(e.target.offsetLeft.toString())
+              setWidthItemMenuSkills(e.target.offsetWidth.toString())
+            }} className={` px-2 py-2 cursor-pointer`}>Soft skills</h3>
           <h3 onClick={(e) => {
             setSkillsID(2)
             setLeftItemMenuSkills(e.target.offsetLeft.toString())
@@ -315,7 +369,7 @@ function App() {
             setLeftItemMenuSkills(e.target.offsetLeft.toString())
             setWidthItemMenuSkills(e.target.offsetWidth.toString())
           }} className={` px-2 py-2 cursor-pointer`}>Frameworks</h3>
-          <span style={{width:`${widthItemMenuSkills}px`,left:`${leftItemMenuSkills}px`}} className={`absolute duration-1000 ease-in-out h-1 bg-mainblue bottom-0  rounded-md und`}></span>
+          <span style={{ width: `${widthItemMenuSkills}px`, left: `${leftItemMenuSkills}px` }} className={`absolute duration-1000 ease-in-out h-1 bg-mainblue bottom-0  rounded-md und`}></span>
         </div>
 
         {/* skills */}
@@ -681,47 +735,47 @@ function App() {
             <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="http://mohammad70.ir/"><img src="/images/mohammad70.ir.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/GRXgaPq"><img src="/images/codepengradient.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/vYQamOp"><img src="/images/converter c to f.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/WNYKjQm"><img src="/images/AskeyCode.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/VwVBbeM"><img src="/images/TodoApp1.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/wvQxdWR"><img src="/images/changeColor.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/MWzBmbw"><img src="/images/clock.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/RwqBVKy"><img src="/images/wederApp.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/zYMLwwo"><img src="/images/browser.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/bGQjWRJ"><img src="/images/hamderMenu.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/NWEBjaZ"><img src="/images/searchText.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/jOQpaMV"><img src="/images/ofsetMenu.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/vYQaWXM"><img src="/images/DETECTINGTABCHANGE.png" alt="" /></a></div>
             </SwiperSlide>
-            <SwiperSlide  className=' bg-white shadow-lg rounded-xl overflow-hidden' >
+            <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div><a target='_blank' href="https://codepen.io/Spd-falcon/pen/ZEmjaeX"><img src="/images/dictionary.png" alt="" /></a></div>
             </SwiperSlide>
-            
-            
+
+
 
           </Swiper>
         </div>
@@ -797,8 +851,8 @@ function App() {
             <SwiperSlide className=' bg-white shadow-lg rounded-xl overflow-hidden' >
               <div className=''><img className='' src="/images/brand2.png" alt="" /></div>
             </SwiperSlide>
-            
-            
+
+
 
           </Swiper>
         </div>
