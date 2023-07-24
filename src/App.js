@@ -14,19 +14,16 @@ function App() {
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      console.log('mohammad');
-      console.log(tab1.current.offsetLeft);
-      console.log(tab2.current.offsetLeft);
-      if(idMenu === 1){
+      if (idMenu === 1) {
         setLeftItemMenu(tab1.current.offsetLeft)
         setWidthItemMenu(tab1.current.offsetWidth)
-      }else if(idMenu === 2){
+      } else if (idMenu === 2) {
         setLeftItemMenu(tab2.current.offsetLeft)
         setWidthItemMenu(tab2.current.offsetWidth)
-      }else if(idMenu === 3){
+      } else if (idMenu === 3) {
         setLeftItemMenu(tab3.current.offsetLeft)
         setWidthItemMenu(tab3.current.offsetWidth)
-      }else if(idMenu === 4){
+      } else if (idMenu === 4) {
         setLeftItemMenu(tab4.current.offsetLeft)
         setWidthItemMenu(tab4.current.offsetWidth)
       }
@@ -34,6 +31,9 @@ function App() {
   }, [])
   const [idMenu, setIdMenu] = useState(1)
   const [scrollY, setScrollY] = useState(0)
+  useEffect(()=>{
+    window.addEventListener('scroll', scrollHandler)
+  },[])
   const scrollHandler = () => {
     // if (window.scrollY < 1000) {
     //   setScrollY(window.scrollY)
@@ -54,26 +54,25 @@ function App() {
     // }
     if (window.scrollY < 300) {
       setIdMenu(1)
-      setLeftItemMenu(0)
-      setWidthItemMenu(315)
+      setLeftItemMenu(tab1.current.offsetLeft)
+      setWidthItemMenu(tab1.current.offsetWidth)
     } else if (window.scrollY >= 300 && window.scrollY <= 1200) {
-      setLeftItemMenu(316)
-      setWidthItemMenu(315)
       setIdMenu(2)
+      setLeftItemMenu(tab2.current.offsetLeft)
+      setWidthItemMenu(tab2.current.offsetWidth)
     } else if (window.scrollY >= 1200 && window.scrollY <= 1500) {
-      setLeftItemMenu(632)
-      setWidthItemMenu(315)
       setIdMenu(3)
+      setLeftItemMenu(tab3.current.offsetLeft)
+      setWidthItemMenu(tab3.current.offsetWidth)
     } else if (window.scrollY >= 2000 && window.scrollY <= 2300) {
-      setLeftItemMenu(948)
-      setWidthItemMenu(315)
       setIdMenu(4)
+      setLeftItemMenu(tab4.current.offsetLeft)
+      setWidthItemMenu(tab4.current.offsetWidth)
     }
 
-    console.log(window.scrollY);
   }
   const [skillsID, setSkillsID] = useState(1)
-  window.addEventListener('scroll', scrollHandler)
+  
   const menuarr = [
     { id: 1, title: 'Home', href: '#tab-1', ref: tab1 },
     { id: 2, title: 'About', href: '#tab-2', ref: tab2 },
