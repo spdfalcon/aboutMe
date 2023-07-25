@@ -516,42 +516,42 @@ function App() {
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-red-500 to-red-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>Strategic</h3>
+              <h3>team work</h3>
             </div>
             <div
               data-aos="fade-down"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-blue-500 to-blue-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>Individualization</h3>
+              <h3>quick</h3>
             </div>
             <div
               data-aos="fade-right"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-rose-500 to-rose-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>Futuristic</h3>
+              <h3>High learning</h3>
             </div>
             <div
               data-aos="fade-up"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-yellow-500 to-yellow-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>Activator</h3>
+              <h3>Programmer</h3>
             </div>
             <div
               data-aos="fade-right"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-amber-500 to-amber-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>Significance</h3>
+              <h3>responsible</h3>
             </div>
             <div
               data-aos="fade-up"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-teal-500 to-teal-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>Ideator</h3>
+              <h3>hardworker</h3>
             </div>
           </div>
         </div>
