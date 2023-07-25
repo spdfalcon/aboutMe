@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io'
 import { AiFillGithub } from 'react-icons/ai'
 import { AiOutlineInstagram } from 'react-icons/ai'
+import {RiEnglishInput} from 'react-icons/ri'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 function App() {
@@ -25,6 +26,7 @@ function App() {
   const skill2 = useRef(null)
   const skill3 = useRef(null)
 
+  const [lang, setLang] = useState(true)
   useEffect(() => {
     window.addEventListener('resize', () => {
       if (idMenu === 1) {
@@ -102,20 +104,35 @@ function App() {
   const [skillsID, setSkillsID] = useState(1)
 
   const menuarr = [
-    { id: 1, title: 'Home', href: '#tab-1', ref: tab1 },
-    { id: 2, title: 'About', href: '#tab-2', ref: tab2 },
-    { id: 3, title: 'Experience', href: '#tab-3', ref: tab3 },
-    { id: 4, title: 'Contact', href: '#tab-4', ref: tab4 },
+    { id: 1, title1: 'Home', title2:'خانه', href: '#tab-1', ref: tab1 },
+    { id: 2, title1: 'About', title2:'درباره من', href: '#tab-2', ref: tab2 },
+    { id: 3, title1: 'Experience', title2:'تجربیات', href: '#tab-3', ref: tab3 },
+    { id: 4, title1: 'Contact', title2:'ارتباط با من', href: '#tab-4', ref: tab4 },
   ]
   
 
   return (
     <div className='font-roboto scroll-smooth'>
+      {
+        lang ? (
+          <div
+          onClick={()=>{
+            setLang(priv=>!priv)
+          }} 
+          className='fixed cursor-pointer flex justify-center items-center top-20 left-5 rounded-md p-2 text-2xl text-white z-50 bg-mainblue w-10 h-10 hover:bg-blue-600 duration-300'>En</div>
+          ) : (
+            <div
+            onClick={()=>{
+              setLang(priv=>!priv)
+            }} 
+            className='fixed cursor-pointer flex justify-center items-center top-20 left-5 rounded-md p-2 text-2xl text-white z-50 bg-mainblue w-10 h-10 hover:bg-blue-600 duration-300'>Fa</div>
+        )
+      }
       <header id='tab-1' className='font-lato'>
         <div
           style={{ background: `url(/images/bgheader.jpg)` }}
           className='w-full h-screen bg-center bg-cover overflow-hidden relative'>
-          <div className='l w-full absolute  xl:left-10 left-0 z-50 duration-500'
+          <div className='l w-full absolute  xl:left-10 left-0 z-40 duration-500'
             style={{ top: (scrollY / 2) - 30 }}>
             <img className='w-1/2' src="/images/meheader.png" />
           </div>
@@ -125,9 +142,15 @@ function App() {
             data-aos="fade-up"
             className={`r absolute right-10 md:right-16 text-right w-1/2 duration-500`}
             style={{ top: scrollY + 100 }}>
-            <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-mainblue'>Hi there, my name is</h3>
-            <h1 className='text-white xl:text-7xl lg:text-6xl md:text-5xl text-4xl text-center tracking-widest bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text'>MOHAMMMAD REZA</h1>
-            <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-white'>I consider <span className='text-mainblue'>effort</span> and <span className='text-mainblue'>perseverance</span> more important than anything in my work and the word <span className='text-mainblue'>"I can't"</span> does not exist in my mind</h3>
+            <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-mainblue'> {lang ? 'Hi there, my name is' : 'سلام اسم من'}</h3>
+            <h1 className='text-white xl:text-7xl lg:text-6xl md:text-5xl text-4xl text-center tracking-widest bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text'>{lang ? 'MOHAMMMAD REZA' : 'محمدرضا'}</h1>
+            {
+              lang ? (
+                <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-white'>I consider <span className='text-mainblue'>effort</span> and <span className='text-mainblue'>perseverance</span> more important than anything in my work and the word <span className='text-mainblue'>"I can't"</span> does not exist in my mind</h3>
+                ): (
+                <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-white'>من <span className='text-mainblue'>پشت کار </span>و <span className='text-mainblue'>تلاش</span> را برای موفقیت در کار بسیار مهم میدانم و در ذهنم کلمه ای به اسم <span className='text-mainblue'> نمیتوانم </span> وجود ندارد <span className='text-mainblue'>کاردان بیکار نمیماند</span></h3>
+              )
+            }
           </div>
           <a href='#tab-2' className='absolute text-white bottom-16 right-24 text-8xl animate-bounce cursor-pointer z-50 '>
             <IoIosArrowDown className='cursor-pointer animate-pulse'></IoIosArrowDown>
@@ -135,7 +158,7 @@ function App() {
         </div>
       </header>
       {/* start menu */}
-      <div className=' sticky left-0 top-0 grid grid-cols-4 gap-px text-header1 md:text-2xl font-lato shadow-lg bg-white overflow-x-hidden z-50'>
+      <div className=' sticky left-0 top-0 grid grid-cols-4 gap-px text-header1 md:text-2xl font-lato shadow-lg bg-white overflow-x-hidden z-40'>
         {
           menuarr.map((item) => (
             <a
@@ -144,7 +167,7 @@ function App() {
                 setIdMenu(item.id)
                 setLeftItemMenu(e.target.offsetLeft)
                 setWidthItemMenu(e.target.offsetWidth)
-              }} className='py-4 flex justify-center items-center' href={item.href}>{item.title}</a>
+              }} className='py-4 flex justify-center items-center' href={item.href}>{lang ? item.title1 : item.title2}</a>
           ))
         }
         <div className='absolute w-full h-2 bottom-0'>
@@ -161,13 +184,13 @@ function App() {
         className='text-center pt-28 px-10'>
         <h2
 
-          className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 mb-28 tracking-widest'>About Me</h2>
+          className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 mb-28 tracking-widest'>{lang ? 'About Me' : 'درباره من'}</h2>
 
         <div className='font-roboto text-slate-500 max-w-4xl mx-auto'>
-          <p className=''>My name is Mohammad Reza Guderzi. My sports activities include swimming coaching and pool lifeguard certification. I am a parkour coach.</p>
-          <p className='mt-5 '>I worked in the field of marketing as a sales manager and sales supervisor, and I have a bachelor's degree in psychology and a master's degree in psychology.</p>
-          <p className='mt-5 '>I have been engaged in website design and front-end activities for two years. I have mastered HTML, CSS, JavaScript, React, and CSS frameworks such as Tailwind CSS, Bootstrap, and MEUI.</p>
-          <p className='mt-5 '>Complete mastery of NPM, Git, GitHub, and various JS and React libraries</p>
+          <p className=''>{lang ? 'My name is Mohammad Reza Guderzi. My sports activities include swimming coaching and pool lifeguard certification. I am a parkour coach.' : 'من محمدرضا گودرزی هستم. فعالیت های ورزشی من شامل مربیگری شنا و گواهی نجات غریق استخر است. من مربی پارکور هستم.'} </p>
+          <p className='mt-5 '>{lang ? 'I worked in the field of marketing as a sales manager and sales supervisor, and I have a bachelors degree in psychology and a masters degree in psychology.' : 'در زمینه بازاریابی به عنوان مدیر فروش و ناظر فروش فعالیت داشتم و لیسانس روانشناسی و فوق لیسانس روانشناسی دارم.'} </p>
+          <p className='mt-5 '>{lang ? 'I have been engaged in website design and front-end activities for two years. I have mastered HTML, CSS, JavaScript, React, and CSS frameworks such as Tailwind CSS, Bootstrap, and MEUI.' : 'من دو سال است که در زمینه طراحی سایت و فعالیت های فرانت اند مشغول هستم. من به چارچوب های HTML، CSS، JavaScript، React و CSS مانند Tailwind CSS، Bootstrap و MEUI تسلط دارم.'} </p>
+          <p className='mt-5 '>{lang ? 'Complete mastery of NPM, Git, GitHub, and various JS and React libraries' : 'تسلط کامل بر NPM، Git، GitHub و JS و React مختلف'} </p>
         </div>
         {/* start git and... */}
         <div className='mt-10 md:flex-row md:justify-center md:gap-32 flex flex-col gap-5 items-center'>
@@ -213,7 +236,7 @@ function App() {
             data-aos="fade-up"
             data-aos-offset="200"
             data-aos-duration="3000"
-            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>Experience</h2>
+            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'Experience' : 'تجربیات'}</h2>
         </div>
         <div
           data-aos="fade-left"
