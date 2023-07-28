@@ -148,7 +148,7 @@ function App() {
               lang ? (
                 <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-white'>I consider <span className='text-mainblue'>effort</span> and <span className='text-mainblue'>perseverance</span> more important than anything in my work and the word <span className='text-mainblue'>"I can't"</span> does not exist in my mind</h3>
                 ): (
-                <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-white'>من <span className='text-mainblue'>پشت کار </span>و <span className='text-mainblue'>تلاش</span> را برای موفقیت در کار بسیار مهم میدانم و در ذهنم کلمه ای به اسم <span className='text-mainblue'> نمیتوانم </span> وجود ندارد <span className='text-mainblue'>کاردان بیکار نمیماند</span></h3>
+                <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-white'>من <span className='text-mainblue'>پشت کار </span>و <span className='text-mainblue'>تلاش</span> را برای موفقیت در کار بسیار مهم میدانم و در ذهنم کلمه ای به اسم <span className='text-mainblue'> نمیتوانم </span> وجود ندارد <span className='text-mainblue'>(کاردان بیکار نمیماند)</span></h3>
               )
             }
           </div>
@@ -386,7 +386,7 @@ function App() {
           data-aos-offset="200"
           data-aos-duration="3000"
           className='mt-36'>
-          <div className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 text-center tracking-widest'><h2>Skills</h2></div>
+          <div className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 text-center tracking-widest'><h2>{lang ? 'Skills' : 'مهارت ها'}</h2></div>
         </div>
 
         {/* end menu skills */}
@@ -402,14 +402,14 @@ function App() {
               setWidthItemMenuSkills(e.target.offsetWidth.toString())
             }}
             ref={skill1}
-            className={` px-2 py-2 cursor-pointer`}>Soft skills</h3>
+            className={` px-2 py-2 cursor-pointer`}>{lang ? 'Soft skills' : 'مهارت های نرم'}</h3>
           <h3 onClick={(e) => {
             setSkillsID(2)
             setLeftItemMenuSkills(e.target.offsetLeft.toString())
             setWidthItemMenuSkills(e.target.offsetWidth.toString())
           }}
             ref={skill2}
-            className={` px-2 py-2 cursor-pointer`}>Technology</h3>
+            className={` px-2 py-2 cursor-pointer`}>{lang ? 'Technology' : 'فناوری ها'}</h3>
           <h3 onClick={(e) => {
             setSkillsID(3)
             setLeftItemMenuSkills(e.target.offsetLeft.toString())
@@ -433,7 +433,7 @@ function App() {
 
 
               <li className={`relative  ${skillsID === 1 ? 'w-4/5' : skillsID === 2 ? 'w-11/12' : skillsID === 3 ? `w-2/3` : ''} rounded-e-md overflow-hidden py-5`}>
-                <span className={`absolute duration-1000 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>High expression fan</span>
+                <span className={`absolute duration-1000 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>{lang ? 'High expression fan' : 'فن بیان بالا'}</span>
                 <span className={`duration-1000 absolute h-full bg-mainblue bottom-0 left-0 -z-10 ${skillsID === 1 ? 'w-full' : 'w-0'}`}></span>
 
 
@@ -448,7 +448,7 @@ function App() {
 
 
               <li className={`relative  ${skillsID === 1 ? 'w-1/2' : skillsID === 2 ? 'w-3/4' : skillsID === 3 ? `w-11/12` : ''} rounded-e-md overflow-hidden py-5`}>
-                <span className={`absolute duration-1000 delay-200 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>Problem-solving skills</span>
+                <span className={`absolute duration-1000 delay-200 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>{lang ? 'Problem-solving skills' : 'مهارت های حل مسئله'}</span>
                 <span className={`duration-1000 delay-200 absolute h-full bg-mainblue bottom-0 left-0 -z-10 ${skillsID === 1 ? 'w-full' : 'w-0'}`}></span>
 
 
@@ -463,7 +463,7 @@ function App() {
 
 
               <li className={`relative  ${skillsID === 1 ? 'w-3/4' : skillsID === 2 ? 'w-2/3' : skillsID === 3 ? `w-3/5` : ''} rounded-e-md overflow-hidden py-5`}>
-                <span className={`absolute duration-1000 delay-300 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>Emotional intelligence</span>
+                <span className={`absolute duration-1000 delay-300 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>{lang ? 'Emotional intelligence' : 'هوش هیجانی'}</span>
                 <span className={`duration-1000 delay-300 absolute h-full bg-mainblue bottom-0 left-0 -z-10 ${skillsID === 1 ? 'w-full' : 'w-0'}`}></span>
 
 
@@ -478,7 +478,7 @@ function App() {
 
 
               <li className={`relative  ${skillsID === 1 ? 'w-11/12' : skillsID === 2 ? 'w-4/5' : skillsID === 3 ? `w-4/6` : ''} rounded-e-md overflow-hidden py-5`}>
-                <span className={`absolute duration-1000 delay-500 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>Teamwork skills</span>
+                <span className={`absolute duration-1000 delay-500 bottom-1/2 translate-y-1/2 ${skillsID === 1 ? 'left-3' : '-left-full'}`}>{lang ? 'Teamwork skills' : 'مهارت های کار گروهی'}</span>
                 <span className={`duration-1000 delay-500 absolute h-full bg-mainblue bottom-0 left-0 -z-10 ${skillsID === 1 ? 'w-full' : 'w-0'}`}></span>
 
 
@@ -491,19 +491,19 @@ function App() {
               </li>
               <div className='absolute -bottom-16 w-16 -left-16 text-black'>
                 <span className='absolute bottom-5 right-0 w-px h-72 bg-gray-300'></span>
-                <span className='inline-block w-10'>SKILL LEVEL:</span>
+                <span className='inline-block w-10'>{lang ? 'SKILL LEVEL:' : 'سطح مهارت:'}</span>
               </div>
               <div className='absolute -bottom-16 left-1/4 -translate-x-1/4 text-gray-400'>
                 <span className='absolute bottom-5 right-0 w-px h-72 bg-gray-300'></span>
-                <span className='inline-block '>The basics</span>
+                <span className='inline-block '>{lang ? 'The basics' : 'پایه'}</span>
               </div>
               <div className='absolute -bottom-16 left-1/2 -translate-x-1/2 text-gray-400'>
                 <span className='absolute bottom-5 right-0 w-px h-72 bg-gray-300'></span>
-                <span className='inline-block '>Advanced</span>
+                <span className='inline-block '>{lang ? 'Advanced':'پیشرفته'}</span>
               </div>
               <div className='absolute -bottom-16 left-3/4 -translate-x-left-3/4 text-gray-400'>
                 <span className='absolute bottom-5 right-0 w-px h-72 bg-gray-300'></span>
-                <span className='inline-block '>Seasoned</span>
+                <span className='inline-block '>{lang ? 'professional' : 'حرفه ای'}</span>
               </div>
 
 
@@ -530,7 +530,7 @@ function App() {
               data-aos="fade-up"
               data-aos-offset="200"
               data-aos-duration="3000"
-              className='text-4xl sm:text-5xl  md:text-6xl tracking-widest'>Clifton Strengths
+              className='text-4xl sm:text-5xl  md:text-6xl tracking-widest'>{lang ? 'Strengths' : 'نقاط قوت'}
             </h2>
           </div>
           <div className=' flex flex-wrap gap-10 px-32 mt-24 justify-center'>
@@ -539,42 +539,42 @@ function App() {
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-red-500 to-red-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>team work</h3>
+              <h3>{lang ? 'team work' : 'کار تیمی'}</h3>
             </div>
             <div
               data-aos="fade-down"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-blue-500 to-blue-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>quick</h3>
+              <h3>{lang ? 'quick' : 'سرعت بالا'}</h3>
             </div>
             <div
               data-aos="fade-right"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-rose-500 to-rose-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>High learning</h3>
+              <h3>{lang ? 'High learning' : 'یادگیری بالا'}</h3>
             </div>
             <div
               data-aos="fade-up"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-yellow-500 to-yellow-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>Programmer</h3>
+              <h3>{lang ? 'Programmer' : 'برنامه ریز'}</h3>
             </div>
             <div
               data-aos="fade-right"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-amber-500 to-amber-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>responsible</h3>
+              <h3>{lang ? 'responsible' : 'مسئول'}</h3>
             </div>
             <div
               data-aos="fade-up"
               data-aos-offset="250"
               data-aos-duration="1000"
               className='bg-gradient-to-br from-teal-500 to-teal-800 w-64 h-64 rounded-lg flex justify-center items-center text-2xl '>
-              <h3>hardworker</h3>
+              <h3>{lang ? 'hardworker' : 'سخت کوش'}</h3>
             </div>
           </div>
         </div>
