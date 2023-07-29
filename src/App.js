@@ -7,6 +7,7 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import {RiEnglishInput} from 'react-icons/ri'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import Contact from './Components/Contact';
 function App() {
   const [leftItemMenuSkills, setLeftItemMenuSkills] = useState(159)
   const [widthItemMenuSkills, setWidthItemMenuSkills] = useState(195)
@@ -65,6 +66,7 @@ function App() {
     })
   }, [])
   const scrollHandler = () => {
+    console.log(window.scrollY);
     if (window.scrollY < 1000) {
       setScrollY(window.scrollY)
 
@@ -90,11 +92,11 @@ function App() {
       setIdMenu(2)
       setLeftItemMenu(tab2.current.offsetLeft)
       setWidthItemMenu(tab2.current.offsetWidth)
-    } else if (window.scrollY >= 1200 && window.scrollY <= 1500) {
+    } else if (window.scrollY >= 1200 && window.scrollY <= 6900) {
       setIdMenu(3)
       setLeftItemMenu(tab3.current.offsetLeft)
       setWidthItemMenu(tab3.current.offsetWidth)
-    } else if (window.scrollY >= 2000 && window.scrollY <= 2300) {
+    } else if (window.scrollY >= 7000 && window.scrollY <= 7400) {
       setIdMenu(4)
       setLeftItemMenu(tab4.current.offsetLeft)
       setWidthItemMenu(tab4.current.offsetWidth)
@@ -591,7 +593,7 @@ function App() {
             data-aos="fade-up"
             data-aos-offset="200"
             data-aos-duration="3000"
-            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>Recommendations</h2>
+            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'Recommendations' : 'نظرات و توصیه ها'}</h2>
         </div>
         <div
           data-aos="fade-left"
@@ -744,10 +746,10 @@ function App() {
             data-aos="fade-up"
             data-aos-offset="200"
             data-aos-duration="3000"
-            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>Portfolio</h2>
+            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'Portfolio': 'نمونه کار ها'}</h2>
         </div>
-        <div className='flex justify-center mt-10 text-gray-500'><p className='max-w-xl'>Though actually doing web and graphic design is not my main area of focus anymore, it sure is fun to do! Here are a handful of items from my portfolio over the last 13 years.</p></div>
-        <div className='tracking-widest text-3xl mt-10 text-header1'><h4>Web & App Development</h4></div>
+        <div className='flex justify-center mt-10 text-gray-500'><p className='max-w-xl'>{lang ? 'I have been working around the clock for 2 years in the field of website design and front-end and I am always learning and every day I introduce myself to new challenges and I enjoy solving challenges.' : 'من در حوزه ی طراحی سایت و فرانت اند 2 سال است به صورت شبانه روزی فعالیت دارم و همیشه در حال آموزش هستم و هر روز خود را وارد چالش های جدیدی میکنم و از حل چالش ها لذت میبرم'}</p></div>
+        <div className='tracking-widest text-3xl mt-10 text-header1'><h4>{lang ? 'Web & App Development': 'توسعه وب و اپلیکیشن'}</h4></div>
         <div
           data-aos="fade-left"
           data-aos-offset="200"
@@ -841,7 +843,7 @@ function App() {
             data-aos="fade-up"
             data-aos-offset="200"
             data-aos-duration="3000"
-            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>Brand Design</h2>
+            className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'companies' : 'شرکت ها'}</h2>
         </div>
         <div
           data-aos="fade-left"
@@ -909,7 +911,15 @@ function App() {
 
 
       {/* end brand */}
-      <div className='h-screen'></div>
+
+      {/* start contact us */}
+            
+            <Contact
+            lang={lang}
+            ></Contact>
+
+      {/* end contact us */}
+
     </div>
   );
 }
