@@ -154,7 +154,7 @@ function App() {
                   className={`r absolute right-10 md:right-16 text-right w-1/2 duration-500`}
                   style={{ top: scrollY + 100 }}>
                   <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-mainblue'> {lang ? 'Hi there, my name is' : 'سلام اسم من'}</h3>
-                  <h1 className='text-white xl:text-7xl lg:text-6xl md:text-5xl text-4xl text-center tracking-widest bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text'>{lang ? 'MOHAMMMAD REZA' : 'محمدرضا'}</h1>
+                  <h1 className='text-white xl:text-7xl lg:text-6xl md:text-5xl text-3xl text-center tracking-widest bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text'>{lang ? 'MOHAMMMAD REZA' : 'محمدرضا'}</h1>
                   {
                     lang ? (
                       <h3 className='xl:text-4xl lg:text-3xl md:text2xl text-xl text-white'>I consider <span className='text-mainblue'>effort</span> and <span className='text-mainblue'>perseverance</span> more important than anything in my work and the word <span className='text-mainblue'>"I can't"</span> does not exist in my mind</h3>
