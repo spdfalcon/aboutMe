@@ -115,7 +115,9 @@ function App() {
   ]
   const [loadWindow, setLoadWindow] = useState(false)
   useEffect(()=>{
-    window.addEventListener('load', () => setLoadWindow(true))
+    setTimeout(() => {
+      setLoadWindow(true)
+    }, 3000);
   },[])
   return (
     <>
@@ -186,8 +188,8 @@ function App() {
             {/* end menu */}
             {/* start about us */}
             <div
-              data-aos-offset="200"
-              data-aos-duration="3000"
+              data-aos-offset="100"
+              data-aos-duration="2000"
               data-aos="fade-up"
               id='tab-2'
               className='text-center pt-28 px-10'>
@@ -243,8 +245,8 @@ function App() {
               <div className='text-center'>
                 <h2
                   data-aos="fade-up"
-                  data-aos-offset="200"
-                  data-aos-duration="3000"
+                  data-aos-offset="100"
+                  data-aos-duration="2000"
                   className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'Experience' : 'تجربیات'}</h2>
               </div>
               <div
@@ -392,8 +394,8 @@ function App() {
 
               <div
                 data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-duration="3000"
+                data-aos-offset="100"
+                data-aos-duration="2000"
                 className='mt-36'>
                 <div className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 text-center tracking-widest'><h2>{lang ? 'Skills' : 'مهارت ها'}</h2></div>
               </div>
@@ -537,8 +539,8 @@ function App() {
                 <div className='text-center'>
                   <h2
                     data-aos="fade-up"
-                    data-aos-offset="200"
-                    data-aos-duration="3000"
+                    data-aos-offset="100"
+                    data-aos-duration="2000"
                     className='text-4xl sm:text-5xl  md:text-6xl tracking-widest'>{lang ? 'Strengths' : 'نقاط قوت'}
                   </h2>
                 </div>
@@ -598,8 +600,8 @@ function App() {
               <div className='text-center'>
                 <h2
                   data-aos="fade-up"
-                  data-aos-offset="200"
-                  data-aos-duration="3000"
+                  data-aos-offset="100"
+                  data-aos-duration="2000"
                   className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'Recommendations' : 'نظرات و توصیه ها'}</h2>
               </div>
               <div
@@ -751,8 +753,8 @@ function App() {
               <div className='text-center'>
                 <h2
                   data-aos="fade-up"
-                  data-aos-offset="200"
-                  data-aos-duration="3000"
+                  data-aos-offset="100"
+                  data-aos-duration="2000"
                   className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'Portfolio' : 'نمونه کار ها'}</h2>
               </div>
               <div className='flex justify-center mt-10 text-gray-500'><p className='max-w-xl'>{lang ? 'I have been working around the clock for 2 years in the field of website design and front-end and I am always learning and every day I introduce myself to new challenges and I enjoy solving challenges.' : 'من در حوزه ی طراحی سایت و فرانت اند 2 سال است به صورت شبانه روزی فعالیت دارم و همیشه در حال آموزش هستم و هر روز خود را وارد چالش های جدیدی میکنم و از حل چالش ها لذت میبرم'}</p></div>
@@ -848,14 +850,14 @@ function App() {
               <div className='text-center'>
                 <h2
                   data-aos="fade-up"
-                  data-aos-offset="200"
-                  data-aos-duration="3000"
+                  data-aos-offset="100"
+                  data-aos-duration="2000"
                   className='font-lato text-4xl sm:text-5xl  md:text-6xl text-header1 tracking-widest'>{lang ? 'companies' : 'شرکت ها'}</h2>
               </div>
               <div
                 data-aos="fade-left"
-                data-aos-offset="200"
-                data-aos-duration="3000"
+                data-aos-offset="100"
+                data-aos-duration="2000"
                 className='mt-20 cursor-pointer'>
                 <Swiper
 
