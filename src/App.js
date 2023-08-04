@@ -148,8 +148,8 @@ function App() {
                   <img className='w-1/2' src="/images/meheader.png" />
                 </div>
                 <div
-                  data-aos-offset="200"
-                  data-aos-duration="3000"
+                  data-aos-offset="100"
+                  data-aos-duration="2000"
                   data-aos="fade-up"
                   className={`r absolute right-10 md:right-16 text-right w-1/2 duration-500`}
                   style={{ top: scrollY + 100 }}>
@@ -251,8 +251,8 @@ function App() {
               </div>
               <div
                 data-aos="fade-left"
-                data-aos-offset="200"
-                data-aos-duration="3000"
+                data-aos-offset="100"
+                data-aos-duration="2000"
                 className='mt-20 cursor-pointer'>
                 <Swiper
 
@@ -403,8 +403,8 @@ function App() {
               {/* end menu skills */}
               <div
                 data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-duration="3000"
+                data-aos-offset="100"
+                data-aos-duration="2000"
                 className='relative flex justify-evenly mt-20 py-3 overflow-x-hidden sm:text-xs md:text-xl'>
                 <h3
                   onClick={(e) => {
@@ -435,8 +435,8 @@ function App() {
 
               <div
                 data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-duration="3000"
+                data-aos-offset="100"
+                data-aos-duration="2000"
                 className='px-20 mt-10'>
                 <div>
                   <ul className={`flex flex-col gap-5 md:text-lg text-xs text-white relative `}>
@@ -606,8 +606,8 @@ function App() {
               </div>
               <div
                 data-aos="fade-left"
-                data-aos-offset="200"
-                data-aos-duration="3000"
+                data-aos-offset="100"
+                data-aos-duration="2000"
                 className='mt-20 cursor-pointer'>
                 <Swiper
 
@@ -761,8 +761,8 @@ function App() {
               <div className='tracking-widest text-3xl mt-10 text-header1'><h4>{lang ? 'Web & App Development' : 'توسعه وب و اپلیکیشن'}</h4></div>
               <div
                 data-aos="fade-left"
-                data-aos-offset="200"
-                data-aos-duration="3000"
+                data-aos-offset="100"
+                data-aos-duration="2000"
                 className='mt-20 cursor-pointer'>
                 <Swiper
 
